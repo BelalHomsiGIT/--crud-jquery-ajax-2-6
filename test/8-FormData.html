@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormData</title>
+</head>
+<body>
+    <form id="form">
+        <input type="text" name="text1" value="foo" /><br>
+        <input type="text" name="text2" value="bar" /><br>
+        <input type="text" name="text3" value="baz" /><br>
+        <input type="checkbox" name="check" checked disabled /><br>
+      </form>
+      
+      <p id="output1"></p>
+      <p id="output2"></p>
+
+      <script>
+            /* In JavaScript, a FormData object is a common way to create a bundle of data 
+                to send to the server using XMLHttpRequest or fetch.
+               We can think of it as an array of arrays.
+                There is one array for each element that we want to send to the server.
+                Each element consists of the following three things:
+                    name:     The name of the field.
+                    value:    The value of the field. It can be a String or Blob.
+                    filename: The file’s name to be saved on the server when a Blob is passed as the second parameter.
+            */
+
+            /*Note: Only successful form controls are included in a FormData object,
+                i.e. those with a name and not in a disabled state.*/
+                
+            const form = document.getElementById('form');
+            const formData = new FormData(form);
+            console.log(formData);
+            
+            const output1 = document.getElementById('output1');
+            for (const [key, value] of formData) {
+                output1.textContent += `${key}: ${value}\n`;
+            }
+            
+            const output2 = document.getElementById('output2');
+            formData.append("appended", "2000");
+            for (const [key, value] of formData) {
+                output2.textContent += `${key}: ${value}\n`;
+            }
+      </script>
+</body>
+</html>

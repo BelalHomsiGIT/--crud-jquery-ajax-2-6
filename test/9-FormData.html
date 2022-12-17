@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormData</title>
+    <style>
+        input {
+            margin: 5px;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+    <a href="https://www.javascripttutorial.net/web-apis/javascript-formdata/">javascripttutorial</a><br><br>
+    <form id="subscription">
+        <h1>Subscribe</h1>
+        <div class="field">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your fullname" required />
+        </div>
+        <div class="field">
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" placeholder="Enter your email address" required />
+        </div>
+        <div class="field">
+            <button type="submit" class="full" id="submit">Subscribe</button>
+        </div>
+    </form>
+      
+      <script>
+            /* In JavaScript, a FormData object is a common way to create a bundle of data 
+                to send to the server using XMLHttpRequest or fetch.
+               We can think of it as an array of arrays.
+                There is one array for each element that we want to send to the server.
+                Each element consists of the following three things:
+                    name:     The name of the field.
+                    value:    The value of the field. It can be a String or Blob.
+                    filename: The file’s name to be saved on the server when a Blob is passed as the second parameter.
+            */
+           const form = document.querySelector('#subscription');
+           const formData = new FormData(form);
+
+           const btn = document.querySelector('#submit');
+            btn.addEventListener('click', (e) => {
+                // prevent the form from submitting
+                e.preventDefault();
+
+                // show the form values - Note .enries method:
+                const formData = new FormData(form);
+                const values = [...formData.entries()];
+                console.log(values);
+            });
+      </script>
+</body>
+</html>

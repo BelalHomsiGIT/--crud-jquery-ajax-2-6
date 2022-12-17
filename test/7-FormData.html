@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>FormData</title>
+    <style>
+        input {
+            margin: 5px;
+            padding: 4px;
+        }
+    </style>
+</head>
+<body>
+                        <!-- FormData object without an HTML form -->
+                    <!-- --------------------------------------------- -->
+      
+      <script>
+            /* In JavaScript, a FormData object is a common way to create a bundle of data 
+                to send to the server using XMLHttpRequest or fetch.
+               We can think of it as an array of arrays.
+                There is one array for each element that we want to send to the server.
+                Each element consists of the following three things:
+                    name:     The name of the field.
+                    value:    The value of the field. It can be a String or Blob.
+                    filename: The file’s name to be saved on the server when a Blob is passed as the second parameter.
+            */
+            const formData = new FormData();
+            formData.append('name', 'Belal Mohammed Homsi');
+            formData.append('age', 1500);
+
+            console.log("Form Data");
+            for (let obj of formData) {
+                console.log(obj);
+            }
+            
+      </script>
+</body>
+</html>
